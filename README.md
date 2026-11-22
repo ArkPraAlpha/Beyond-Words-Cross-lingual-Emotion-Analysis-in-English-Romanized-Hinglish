@@ -417,7 +417,7 @@ No. That is a planned module.
 |---|---|
 | Pre-trained models | `FacebookAI/xlm-roberta-base`, `l3cube-pune/hing-roberta` |
 | Training | PyTorch 2.15 · HuggingFace Transformers 4.48 · Google Colab T4 GPU |
-| Inference server | FastAPI + uvicorn + ngrok tunnel |
+| Inference server |  ngrok tunnel |
 | UI | Streamlit ≥ 1.40 |
 | Data | GoEmotions · EmoSen · HinEmo-9 |
 
