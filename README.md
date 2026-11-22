@@ -281,7 +281,7 @@ beyond-words/
 │   │   └── predictions/         Error analysis CSVs
 │   ├── condB/                   Condition B outputs (run NB 05 to generate → push here)
 │   ├── condC/                   Condition C outputs (run NB 04/06 to generate → push here)
-│   ├── condD/                   Condition D: HingRoBERTa + EmoSen ✅
+│   ├── condD/                   Condition D: HingRoBERTa + EmoSen 
 │   │   ├── figures/             Training curves
 │   │   ├── logits/              Raw logit CSVs across all test sets
 │   │   ├── logs/                Training history JSON
@@ -344,7 +344,7 @@ To use a checkpoint locally, copy its folder (it must contain `config.json`, `mo
 |---|---|---|---|
 | 01 | `01_dataset_exploration.ipynb` | — | `data/processed/goemotions_ekman_dedup.csv`, audit files |
 | 02 | `02_hinglish_dataset_audit.ipynb` | — | EmoSen / HinEmo-9 audit reports |
-| 03 | `03_english_emotion_baseline.ipynb` | **A** | `outputs/condA/` (complete ✅) |
+| 03 | `03_english_emotion_baseline.ipynb` | **A** | `outputs/condA/` (complete  ) |
 | 04 | `04_english_emotion_hingroberta_condC.ipynb` | **C** | `outputs/condC/` (run to populate) |
 | 05 | `05_hinglish_adaptation_condB_condD.ipynb` | **B, D** | `outputs/condB/`, `outputs/condD/` |
 | 06 | `06_hinglish_eval_ABCD_comparison.ipynb` | A–D | `outputs/cross_condition/` |
@@ -384,7 +384,7 @@ To use a checkpoint locally, copy its folder (it must contain `config.json`, `mo
 
 | Stage | Status | Notes |
 |---|---|---|
-| Emotion module, Conditions A–D | ✅ Complete | This repository |
+| Emotion module, Conditions A–D |   Complete | This repository |
 | Anger→Disgust shift diagnostic | 🔎 Under investigation | Notebook 07 |
 | Probability calibration | 📋 Planned | See [ROADMAP.md](ROADMAP.md) |
 | Sarcasm module | 📋 Planned | See [ROADMAP.md](ROADMAP.md) |
