@@ -1,0 +1,40 @@
+{
+  "seed": 123,
+  "best_epoch": 2,
+  "best_val_macro_f1": 0.6223916943713583,
+  "test_metrics": {
+    "test_accuracy": 0.6827891979040709,
+    "test_macro_f1": 0.6257348630145027,
+    "test_weighted_f1": 0.6839321492955416
+  },
+  "checkpoint_dir": "/content/Beyond-Words/models/english_emotion/xlmr_english_ekman7_condA/seed_123",
+  "label_order": [
+    "anger",
+    "disgust",
+    "fear",
+    "joy",
+    "sadness",
+    "surprise",
+    "neutral"
+  ],
+  "cfg": {
+    "model_name": "FacebookAI/xlm-roberta-base",
+    "num_labels": "7",
+    "max_seq_len": "128",
+    "dataset_path": "/content/Beyond-Words/data/processed/goemotions_ekman_dedup.csv",
+    "num_epochs": "3",
+    "train_batch_size": "16",
+    "eval_batch_size": "32",
+    "learning_rate": "2e-05",
+    "weight_decay": "0.01",
+    "warmup_ratio": "0.1",
+    "grad_clip": "1.0",
+    "grad_accum_steps": "1",
+    "use_fp16": "True",
+    "use_class_weights": "True",
+    "seeds": "[42, 123, 2026]",
+    "primary_metric": "macro_f1",
+    "experiment_name": "xlmr_english_ekman7",
+    "condition_label": "A"
+  }
+}

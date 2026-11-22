@@ -1,0 +1,110 @@
+# =============================================================================
+# Beyond Words — .gitignore
+# =============================================================================
+
+# ── Model weights (too large for git; use Hugging Face Hub or Google Drive) ─
+models/*/model.safetensors
+models/*/pytorch_model.bin
+models/*/flax_model.msgpack
+models/**/model.safetensors
+models/**/pytorch_model.bin
+
+# Keep model config and tokenizer files (small, needed for reproducibility)
+# models/**/config.json          ← TRACKED
+# models/**/tokenizer.json       ← TRACKED
+# models/**/tokenizer_config.json ← TRACKED
+# models/**/sentencepiece.bpe.model ← TRACKED (4.8 MB – borderline, tracked)
+# models/**/special_tokens_map.json ← TRACKED
+# models/**/run_metadata.json    ← TRACKED
+
+# ── Large data files ──────────────────────────────────────────────────────
+data/processed/*.csv
+data/raw/
+data/interim/
+*.csv.gz
+*.parquet
+
+# Keep .gitkeep placeholder
+!data/processed/.gitkeep
+!data/raw/.gitkeep
+
+# ── Loose data files at root (from old messy structure) ───────────────────
+emosen_dedup_frozen.csv
+emosen_encoding_repaired_frozen.csv
+
+# ── Zip archives ─────────────────────────────────────────────────────────
+*.zip
+!*.ipynb.zip   # (allow if you ever zip a notebook intentionally)
+
+# ── Credentials and secrets ───────────────────────────────────────────────
+Auth_token.txt
+*.token
+*.key
+.env
+.secrets
+ngrok.yml
+secrets.toml
+.streamlit/secrets.toml
+
+# ── Python ────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+*.whl
+
+# ── Virtual environments ──────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+.env/
+
+# ── Jupyter / IPython ─────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb.bak
+*.ipynb.bak2
+*.ipynb.bak3
+
+# ── OS files ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+
+# ── Editors ───────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.user
+*.swp
+*.swo
+*~
+
+# ── Old / legacy structure (cleaned up) ──────────────────────────────────
+Project/
+outputs/english_emotion/
+notebooks/builder_tmp/
+
+# ── Temporary and scratch files ───────────────────────────────────────────
+*.tmp
+*.bak
+*.log
+tmp/
+scratch/
+_tmp_*/
+
+# ── Logit CSVs for condB and condC 
+# (run notebooks 05 and 06 to regenerate; they're tracked for condA and condD)
+outputs/condB/
+outputs/condC/
+
+# ── HuggingFace cache ─────────────────────────────────────────────────────
+.cache/
+huggingface/
+transformers_cache/

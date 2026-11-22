@@ -1,0 +1,106 @@
+{
+  "experiment_name": "hingroberta_english_plus_emosen6",
+  "condition": "D",
+  "backbone": "l3cube-pune/hing-roberta",
+  "model_revision_pinned": "f714c4bdce6b008a2fbb84193eee99e651c59e15",
+  "model_commit_resolved": "f714c4bdce6b008a2fbb84193eee99e651c59e15",
+  "task_data": "GoEmotions-Ekman7 (English, identical to A/C) + EmoSen six-class (Others excluded)",
+  "label_order": [
+    "anger",
+    "disgust",
+    "fear",
+    "joy",
+    "sadness",
+    "surprise",
+    "neutral"
+  ],
+  "dataset_sha256_goemotions": "95fa0632a30a54b8210a6bdc0f607810951061b1263fe2d97ca3dc0b5911ac9b",
+  "dataset_sha256_emosen": "57bffcf415be63823bdc6a5fcd2a7141e743c53f789dab3acb2a918289534b0d",
+  "train_composition": {
+    "english": 39257,
+    "hinglish": 7694
+  },
+  "test_sets": {
+    "goemo_test": {
+      "rows": 4962,
+      "allowed_classes": [
+        "anger",
+        "disgust",
+        "fear",
+        "joy",
+        "sadness",
+        "surprise"
+      ]
+    },
+    "emosen_test": {
+      "rows": 1927,
+      "allowed_classes": [
+        "anger",
+        "disgust",
+        "fear",
+        "joy",
+        "sadness",
+        "surprise"
+      ]
+    },
+    "hinemo_test": {
+      "rows": 270,
+      "allowed_classes": [
+        "anger",
+        "fear",
+        "joy",
+        "sadness",
+        "surprise"
+      ]
+    }
+  },
+  "hyperparameters": {
+    "model_name": "l3cube-pune/hing-roberta",
+    "model_revision": "f714c4bdce6b008a2fbb84193eee99e651c59e15",
+    "num_labels": "7",
+    "max_seq_len": "128",
+    "dataset_path": "/content/Beyond-Words/data/processed/goemotions_ekman_dedup.csv",
+    "hinglish_train_file": "emosen_dedup_frozen.csv",
+    "hinglish_label_policy": "six classes; Others excluded; no Neutral from Hinglish",
+    "num_epochs": "3",
+    "train_batch_size": "16",
+    "eval_batch_size": "32",
+    "learning_rate": "2e-05",
+    "weight_decay": "0.01",
+    "warmup_ratio": "0.1",
+    "grad_clip": "1.0",
+    "grad_accum_steps": "1",
+    "use_fp16": "True",
+    "use_class_weights": "True",
+    "primary_metric": "macro_f1",
+    "selection_rule": "pooled six-class validation macro-F1 (English val + EmoSen val, Neutral masked)",
+    "experiment_name": "hingroberta_english_plus_emosen6",
+    "condition_label": "D"
+  },
+  "seeds": [
+    42,
+    123,
+    2026
+  ],
+  "seeds_completed": [
+    42,
+    123,
+    2026
+  ],
+  "completion_state": "multi_seed_complete",
+  "software": {
+    "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+    "pytorch": "2.14.1+cu130",
+    "transformers": "4.48.3",
+    "numpy": "2.4.6",
+    "pandas": "2.2.3"
+  },
+  "completed_at": "2026-11-16T04:08:47.547009",
+  "documented_limitations": [
+    "Hinglish adaptation data has no Neutral examples; Neutral is excluded from the primary evaluation.",
+    "Checkpoint selection uses pooled six-class validation macro-F1, whereas A/C used English 7-class validation macro-F1.",
+    "B/D take about 20% more optimiser steps than A/C because the training set is larger.",
+    "EmoSen test is the same source as the Hinglish training data (in-domain for B/D); hinemo_test is the held-out check.",
+    "EmoSen test has only 13 Fear and 7 Surprise examples: per-class and six-class macro-F1 are noisy; core-class macro-F1 (`macro_f1_core`; 3 classes on HinEmo-9) is reported as a sensitivity."
+  ]
+}

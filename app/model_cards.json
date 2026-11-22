@@ -1,0 +1,133 @@
+{
+  "conditions": {
+    "A": {
+      "name": "XLM-R, English only",
+      "description": "XLM-RoBERTa base fine-tuned on English GoEmotions (seven classes). Scores below are means ± standard deviation over 3 seeds.",
+      "results": [
+        {
+          "test set": "GoEmotions test (Reddit, 6 classes, Neutral excluded)",
+          "examples": 3357,
+          "macro-F1": "0.722 ± 0.011",
+          "core-class macro-F1": "0.716 ± 0.011",
+          "accuracy": "0.815",
+          "ECE": "0.064"
+        },
+        {
+          "test set": "EmoSen test (Twitter, 6 classes, in-domain for B/D)",
+          "examples": 1927,
+          "macro-F1": "0.280 ± 0.006",
+          "core-class macro-F1": "0.416 ± 0.008",
+          "accuracy": "0.673",
+          "ECE": "0.082"
+        },
+        {
+          "test set": "HinEmo-9 gold test (YouTube, 5 classes)",
+          "examples": 270,
+          "macro-F1": "0.374 ± 0.013",
+          "core-class macro-F1": "0.389 ± 0.018",
+          "accuracy": "0.433",
+          "ECE": "0.262"
+        }
+      ]
+    },
+    "B": {
+      "name": "XLM-R + EmoSen",
+      "description": "XLM-RoBERTa base fine-tuned on GoEmotions plus EmoSen Hinglish tweets (six classes). Scores below are means ± standard deviation over 3 seeds.",
+      "results": [
+        {
+          "test set": "GoEmotions test (Reddit, 6 classes, Neutral excluded)",
+          "examples": 3357,
+          "macro-F1": "0.726 ± 0.001",
+          "core-class macro-F1": "0.722 ± 0.003",
+          "accuracy": "0.816",
+          "ECE": "0.065"
+        },
+        {
+          "test set": "EmoSen test (Twitter, 6 classes, in-domain for B/D)",
+          "examples": 1927,
+          "macro-F1": "0.287 ± 0.016",
+          "core-class macro-F1": "0.404 ± 0.003",
+          "accuracy": "0.555",
+          "ECE": "0.208"
+        },
+        {
+          "test set": "HinEmo-9 gold test (YouTube, 5 classes)",
+          "examples": 270,
+          "macro-F1": "0.360 ± 0.021",
+          "core-class macro-F1": "0.389 ± 0.020",
+          "accuracy": "0.389",
+          "ECE": "0.319"
+        }
+      ]
+    },
+    "C": {
+      "name": "HingRoBERTa, English only",
+      "description": "HingRoBERTa (Hinglish-adapted XLM-R) fine-tuned on English GoEmotions (seven classes). Scores below are means ± standard deviation over 3 seeds.",
+      "results": [
+        {
+          "test set": "GoEmotions test (Reddit, 6 classes, Neutral excluded)",
+          "examples": 3357,
+          "macro-F1": "0.733 ± 0.002",
+          "core-class macro-F1": "0.729 ± 0.005",
+          "accuracy": "0.825",
+          "ECE": "0.056"
+        },
+        {
+          "test set": "EmoSen test (Twitter, 6 classes, in-domain for B/D)",
+          "examples": 1927,
+          "macro-F1": "0.353 ± 0.025",
+          "core-class macro-F1": "0.513 ± 0.027",
+          "accuracy": "0.752",
+          "ECE": "0.070"
+        },
+        {
+          "test set": "HinEmo-9 gold test (YouTube, 5 classes)",
+          "examples": 270,
+          "macro-F1": "0.493 ± 0.021",
+          "core-class macro-F1": "0.477 ± 0.024",
+          "accuracy": "0.548",
+          "ECE": "0.205"
+        }
+      ]
+    },
+    "D": {
+      "name": "HingRoBERTa + EmoSen",
+      "description": "HingRoBERTa fine-tuned on GoEmotions plus EmoSen Hinglish tweets (six classes). Scores below are means ± standard deviation over 3 seeds.",
+      "results": [
+        {
+          "test set": "GoEmotions test (Reddit, 6 classes, Neutral excluded)",
+          "examples": 3357,
+          "macro-F1": "0.726 ± 0.005",
+          "core-class macro-F1": "0.727 ± 0.004",
+          "accuracy": "0.820",
+          "ECE": "0.058"
+        },
+        {
+          "test set": "EmoSen test (Twitter, 6 classes, in-domain for B/D)",
+          "examples": 1927,
+          "macro-F1": "0.368 ± 0.019",
+          "core-class macro-F1": "0.509 ± 0.018",
+          "accuracy": "0.646",
+          "ECE": "0.166"
+        },
+        {
+          "test set": "HinEmo-9 gold test (YouTube, 5 classes)",
+          "examples": 270,
+          "macro-F1": "0.527 ± 0.006",
+          "core-class macro-F1": "0.514 ± 0.008",
+          "accuracy": "0.559",
+          "ECE": "0.215"
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Trained on English GoEmotions mapped to seven classes; conditions B and D also use EmoSen tweets (six classes, no Neutral).",
+    "The Hinglish test sets are small: HinEmo-9 gold has 270 examples in 5 classes (no disgust or neutral); EmoSen test has only 13 fear and 7 surprise examples.",
+    "Reported scores are means over 3 seeds. Differences between adapted and non-adapted models were not statistically reliable.",
+    "Probabilities are overconfident (expected calibration error up to about 0.21 on HinEmo-9) and have not been recalibrated.",
+    "Models adapted on EmoSen tend to predict disgust for angry tweets (an annotation-convention and class-weighting effect under investigation).",
+    "Labels are dataset annotation conventions, not a person's true feelings. Do not use the output to make decisions about people.",
+    "No sarcasm, sentiment or intent model is included in this prototype."
+  ]
+}
