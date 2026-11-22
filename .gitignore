@@ -99,9 +99,6 @@ tmp/
 scratch/
 _tmp_*/
 
-# ── condB outputs not yet generated (run NB 05 to populate)
-outputs/condB/
-
 # ── HuggingFace cache ─────────────────────────────────────────────────────
 .cache/
 huggingface/
