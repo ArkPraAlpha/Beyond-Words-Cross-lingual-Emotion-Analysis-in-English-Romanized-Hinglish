@@ -1,0 +1,84 @@
+{
+  "experiment_name": "hingroberta_english_ekman7",
+  "condition": "C",
+  "backbone": "l3cube-pune/hing-roberta",
+  "task_data": "GoEmotions-Ekman7 (English only)",
+  "label_order": [
+    "anger",
+    "disgust",
+    "fear",
+    "joy",
+    "sadness",
+    "surprise",
+    "neutral"
+  ],
+  "id2label": {
+    "0": "anger",
+    "1": "disgust",
+    "2": "fear",
+    "3": "joy",
+    "4": "sadness",
+    "5": "surprise",
+    "6": "neutral"
+  },
+  "label2id": {
+    "anger": 0,
+    "disgust": 1,
+    "fear": 2,
+    "joy": 3,
+    "sadness": 4,
+    "surprise": 5,
+    "neutral": 6
+  },
+  "dataset_path": "/content/Beyond-Words/data/processed/goemotions_ekman_dedup.csv",
+  "dataset_counts": {
+    "train": 39257,
+    "validation": 4930,
+    "test": 4962
+  },
+  "hyperparameters": {
+    "model_name": "l3cube-pune/hing-roberta",
+    "model_revision": "f714c4bdce6b008a2fbb84193eee99e651c59e15",
+    "num_labels": "7",
+    "max_seq_len": "128",
+    "dataset_path": "/content/Beyond-Words/data/processed/goemotions_ekman_dedup.csv",
+    "num_epochs": "3",
+    "train_batch_size": "16",
+    "eval_batch_size": "32",
+    "learning_rate": "2e-05",
+    "weight_decay": "0.01",
+    "warmup_ratio": "0.1",
+    "grad_clip": "1.0",
+    "grad_accum_steps": "1",
+    "use_fp16": "True",
+    "use_class_weights": "True",
+    "primary_metric": "macro_f1",
+    "experiment_name": "hingroberta_english_ekman7",
+    "condition_label": "C"
+  },
+  "model_revision_pinned": "f714c4bdce6b008a2fbb84193eee99e651c59e15",
+  "model_commit_resolved": "f714c4bdce6b008a2fbb84193eee99e651c59e15",
+  "dataset_sha256": "95fa0632a30a54b8210a6bdc0f607810951061b1263fe2d97ca3dc0b5911ac9b",
+  "tokenizer_id_match_vs_xlmr": 1.0,
+  "seeds": [
+    42,
+    123,
+    2026
+  ],
+  "primary_metric": "macro_f1",
+  "software": {
+    "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+    "pytorch": "2.14.1+cu130",
+    "transformers": "4.48.3",
+    "numpy": "2.4.6",
+    "pandas": "2.2.3"
+  },
+  "completed_at": "2026-11-14T19:56:35.124508",
+  "seeds_completed": [
+    42,
+    123,
+    2026
+  ],
+  "completion_state": "multi_seed_complete",
+  "research_notes": "Condition C: HingRoBERTa backbone (l3cube-pune/hing-roberta, pinned revision), English-only GoEmotions training. Class-weighted CrossEntropyLoss (balanced) is the primary planned configuration; compare with unweighted CrossEntropyLoss (set CFG['use_class_weights']=False) as a controlled ablation before claiming weighting improves results. Checkpoint selection by validation macro-F1. Test set evaluated exactly once per seed after model selection. Three independent seeds to quantify variability."
+}

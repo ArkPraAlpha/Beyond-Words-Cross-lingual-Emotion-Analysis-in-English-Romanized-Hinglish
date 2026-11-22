@@ -99,10 +99,8 @@ tmp/
 scratch/
 _tmp_*/
 
-# ── Logit CSVs for condB and condC 
-# (run notebooks 05 and 06 to regenerate; they're tracked for condA and condD)
+# ── condB outputs not yet generated (run NB 05 to populate)
 outputs/condB/
-outputs/condC/
 
 # ── HuggingFace cache ─────────────────────────────────────────────────────
 .cache/
